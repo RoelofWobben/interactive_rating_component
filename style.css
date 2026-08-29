@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap");
+
+:root {
+    --orange_500: hsl(25, 97%, 53%);
+    --white: hsl(0, 100%, 100%);
+    --grey_500: hsl(217, 12%, 63%);
+    --grey_900: hsl(213, 19%, 18%);
+    --grey_950: hsl(216, 12%, 8%);
+
+    --star_circle: hsl(213, 19%, 25%);
+    --rating_circle: hsl(213, 19%, 20%);
+    --selection_background: hsl(213, 19%, 25%);
+
+    --card_top: hsl(213, 19%, 20%);
+    --card_bottom: hsl(213, 19%, 18%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    font-family: "Overpass", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 15px;
+    background-color: var(--grey_950);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.rating-card,
+.thank-you-card {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    translate: -50% -50%;
+    transition: transform 0.8s ease;
+
+    width: min(90%, 415px);
+    margin: 0;
+
+    padding-left: 1.5em;
+    padding-right: 1em;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+
+    background: linear-gradient(180deg, var(--card_top), var(--card_bottom));
+    border-radius: 15px;
+}
+
+.thank-you-card {
+    width: min(90%, 400px);
+    margin: 0 auto;
+    padding: 1.5em;
+
+    background-color: var(--grey_900);
+    border-radius: 15px;
+
+    text-align: center;
+
+    transform: translateX(100vw);
+}
+
+.rating-card.slide-out {
+    transform: translateX(-100vw);
+}
+
+.thank-you-card.slide-in {
+    transform: translateX(0);
+}
+
+.image {
+    width: 40px;
+    height: 40px;
+
+    background-color: var(--star_circle);
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+p {
+    color: var(--grey_500);
+    margin-bottom: 1.5em;
+}
+
+.choices {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5em;
+}
+
+.choices input {
+    position: absolute;
+    opacity: 0;
+}
+
+.choices span {
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    background-color: var(--rating_circle);
+    color: var(--grey_500);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input:checked + span {
+    background-color: var(--white);
+    color: var(--grey_950);
+}
+
+label:hover span {
+    background-color: var(--orange_500);
+    color: var(--grey_950);
+}
+
+.choices label {
+    cursor: pointer;
+}
+
+button {
+    font-size: 15px;
+    line-height: 1.2;
+    letter-spacing: 1.5px;
+
+    width: 100%;
+    padding: 1.25em 0;
+
+    background-color: var(--orange_500);
+    color: var(--grey_950);
+
+    font-weight: 700;
+    border-radius: 30px;
+    border: none;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--white);
+    color: var(--grey_950);
+}
+
+.made_choice {
+    margin-top: 1em;
+    color: var(--orange_500);
+    padding: 0.5em;
+    background-color: var(--selection_background);
+    border-radius: 20px;
+}
