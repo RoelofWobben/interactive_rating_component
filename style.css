@@ -27,7 +27,7 @@ body {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
-    font-size: 15px;
+    font-size: 0.9375rem;
     background-color: var(--grey_950);
     display: flex;
     justify-content: center;
@@ -54,6 +54,7 @@ main {
     margin: 0;
 
     padding-left: 1.5em;
+    /* rechts kleiner: tekstafbreking komt zo dichter bij het ontwerp */
     padding-right: 1em;
     padding-top: 1.5em;
     padding-bottom: 1.5em;
@@ -63,15 +64,8 @@ main {
 }
 
 .thank-you-card {
-    width: min(90%, 400px);
-    margin: 0 auto;
     padding: 1.5em;
-
-    background-color: var(--grey_900);
-    border-radius: 15px;
-
     text-align: center;
-
     transform: translateX(100vw);
 }
 
@@ -103,20 +97,32 @@ h1 {
     font-size: 1.5rem;
 }
 
+.thank-you-card h1:focus {
+    outline: none;
+}
+
 p {
     color: var(--grey_500);
     margin-bottom: 1.5em;
 }
 
 .choices {
+    border: none;
+    padding: 0;
+    margin-bottom: 1.5em;
+
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1.5em;
 }
 
 .choices input {
     position: absolute;
     opacity: 0;
+}
+
+.choices input:focus-visible+span {
+    outline: 2px solid var(--orange_500);
+    outline-offset: 3px;
 }
 
 .choices span {
@@ -133,7 +139,7 @@ p {
     align-items: center;
 }
 
-input:checked + span {
+input:checked+span {
     background-color: var(--white);
     color: var(--grey_950);
 }
@@ -176,4 +182,20 @@ button:hover {
     padding: 0.5em;
     background-color: var(--selection_background);
     border-radius: 20px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.error {
+    color: #ff7171;
 }
