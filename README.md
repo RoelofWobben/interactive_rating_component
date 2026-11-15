@@ -56,7 +56,10 @@ Users should be able to:
 * Mobile-first workflow
 * Vanilla JavaScript
 * CSS transitions and transforms
-* Accessibility features such as keyboard focus states and ARIA attributes
+* Accessibility features such as keyboard focus states
+* A `<form>` with a `submit` event
+* `inert`, `transitionend` and `prefers-reduced-motion`
+
 
 ### What I learned
 
@@ -72,6 +75,14 @@ I learned how to:
 * Create transitions between two different card states
 * Manage accessibility when switching between the rating card and the thank-you card
 * Add visible keyboard focus states for hidden radio inputs
+* Stop the browser from sending the form and reloading the page with `preventDefault()`, so my own JavaScript can handle the submit instead
+
+Things I learned about accessibility:
+
+* `inert` makes a card unreachable for keyboard users, mouse users and screen readers. It does not hide the card visually, that is done with CSS.
+* Text needs a contrast ratio of at least 4.5:1 so people with low vision can read it. My error message also contains text, so it does not rely on colour alone.
+* With an animation, the focus waits for the `transitionend` event. When a user prefers reduced motion, there is no animation and that event never fires, so I set the focus myself.
+* `role="alert"` makes a screen reader announce an error message when its text changes. The element has to be in the page already and empty, so I placed an empty `<p role="alert">` between the rating options and the button and fill it with text when nothing is chosen.
 
 One of the parts I particularly enjoyed was creating the transition between the two cards instead of simply showing and hiding the thank-you message.
 
@@ -91,7 +102,7 @@ For future projects I want to think about accessibility earlier in the developme
 
 ### AI Collaboration
 
-I used ChatGPT as a learning and development assistant during this project.
+I used ChatGPT as a learning and development assistant during this project. I also used Claude to learn about accessibility issues.
 
 I used AI mainly for:
 
@@ -103,7 +114,7 @@ I used AI mainly for:
 
 I did not simply copy a complete solution. I worked through the code step by step, tested the changes myself and asked questions when I did not understand why something worked.
 
-One particularly useful part of the collaboration was improving the accessibility of the project. This included adding visible keyboard focus states, using a `fieldset` and `legend` for the rating group, managing `aria-hidden` when switching cards and moving focus to the thank-you heading after submission.
+One particularly useful part of the collaboration was improving the accessibility of the project. This included adding visible keyboard focus states, using a `fieldset` and `legend` for the rating group, using inert when switching cards and moving focus to the thank-you heading after submission.
 
 ## Author
 
